@@ -3,8 +3,8 @@ using Biblioteca.Models.Items;
 using System.Collections.Generic;
 
 Bibliotecario bibliotecario = new Bibliotecario(login: "123", senha: "123");
-
-
+Emprestimo emprestimo = new Emprestimo();
+    
 #region populando livros
 Dictionary<string, Livro> livros = new Dictionary<string, Livro>();
 
@@ -51,6 +51,7 @@ usuarios.Add("78901234567", new Usuario("Marcos Lima", "789.012.345-67"));
 usuarios.Add("89012345678", new Usuario("Aline Martins", "890.123.456-78"));
 usuarios.Add("90123456789", new Usuario("Lucas Ferreira", "901.234.567-89"));
 usuarios.Add("01234567890", new Usuario("Fernanda Rodrigues", "012.345.678-90"));
+
 #endregion
 
 
@@ -72,69 +73,118 @@ while (continua == true)
 {
     switch (menu())
     {
-        case 0:
+        case 0://Sair
             Console.WriteLine("Você finalizou o programa, até a próxima...");
             Console.WriteLine("Pressione ENTER para finalizar...");
             continua = false;
             break;
 
-        case 1:
-            new Livro().GetLivros(livros);
+        case 1://Listar livros
+            Livro.GetLivros(livros);
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
 
-        case 2:
-            new Jornal().GetJornais(jornais);
+        case 2://Listar Jornais
+            Jornal.GetJornais(jornais);
+            Console.WriteLine("Pressione ENTER para continuar...");
+            Console.ReadLine();
             break;
 
-        case 3:
-            new Usuario().GetUsuarios(usuarios, bibliotecario);
+        case 3://Listar Usuários
+            Usuario.GetUsuarios(usuarios, bibliotecario);
+            Console.WriteLine("Pressione ENTER para continuar...");
+            Console.ReadLine();
             break;
 
-        case 4:
+        case 4://Fazer empréstimo de Livro
             Console.WriteLine("Digite o CPF do Usuário sem pontos:");
             string cpf = Console.ReadLine();
             Console.WriteLine("Digite o código do Livro a ser emprestado:");
             string codigo = Console.ReadLine();
-            bibliotecario.FazerEmprestimo(usuarios[cpf], livros[codigo]);
+            try
+            {
+                bibliotecario.FazerEmprestimo(usuarios[cpf], livros[codigo]);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                Console.WriteLine("Livro ou usuário não encontrados... Por favor, confira as informações e tente novamente");
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um exceção não esperada...");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
+            }
             break;
 
-        case 5:
+        case 5://Fazer empréstimo de Jornal
             Console.WriteLine("Digite o CPF do Usuário sem pontos:");
             cpf = Console.ReadLine();
             Console.WriteLine("Digite o código do Jornal a ser emprestado:");
             codigo = Console.ReadLine();
-            bibliotecario.FazerEmprestimo(usuarios[cpf], jornais[codigo]);
+            try
+            {
+                bibliotecario.FazerEmprestimo(usuarios[cpf], jornais[codigo]);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                Console.WriteLine("Livro ou usuário não encontrados... Por favor, confira as informações e tente novamente");
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um exceção não esperada...");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
+            }
             break;
 
-        case 6:
+        case 6://Devolver empréstimo
             Console.WriteLine("Digite o CPF usuário sem pontos:");
             cpf = Console.ReadLine();
             Console.WriteLine("Digite o código do empréstimo do usuário:");
             int codigoEmprestimo = int.Parse(Console.ReadLine());
+
             usuarios[cpf].Devolver(codigoEmprestimo);
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
 
-        case 7:
+        case 7://Listar todos empréstimos FIX
             new Usuario().GetAllUsuariosEmprestimos(usuarios);
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
 
-        case 8:
+        case 8://Listar empréstimos de um usuário
             Console.WriteLine("Digite o CPF usuário sem pontos:");
             cpf = Console.ReadLine();
-            usuarios[cpf].GetEmprestimos();
+            try
+            {
+                usuarios[cpf].GetEmprestimos();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
-            break; 
-        case 9:
+            break;
+        case 9://Listar empréstimos de um item
             Console.WriteLine("Digite o código do item: ");
             codigo = Console.ReadLine();
             livros[codigo].GetEmprestimosItem();
+            Console.WriteLine("Pressione ENTER para continuar...");
+            Console.ReadLine();
+            break;
+        default:
+            Console.WriteLine("Valor inválido... tente novamente");
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;

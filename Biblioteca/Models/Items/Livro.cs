@@ -22,11 +22,7 @@ namespace Biblioteca.Models.Items
         public string Autor { get; private set; }
         public string Genero { get; private set; }
 
-        public void LivroAddEmprestimo(Emprestimo emprestimo)
-        {
-            Emprestimos.Add(emprestimo);
-        }
-        public void GetLivros(Dictionary<string, Livro> livros)
+        public static void GetLivros(Dictionary<string, Livro> livros)
         {
             foreach (var livro in livros)
             {
@@ -35,6 +31,7 @@ namespace Biblioteca.Models.Items
                 Console.WriteLine($"Título: {livro.Value.Titulo}");
                 Console.WriteLine($"Autor: {livro.Value.Autor}");
                 Console.WriteLine($"Gênero: {livro.Value.Genero}");
+                Console.WriteLine($"Situação: {(livro.Value.Disponivel ? "disponível" : "indisponível")}");
                 Console.WriteLine($"Data de Aquisição: {livro.Value.DataAquisicao.ToString("dd/MM/yyyy")}");
                 Console.WriteLine("------------------------------------------------------------------------------------------------");
 
@@ -44,6 +41,7 @@ namespace Biblioteca.Models.Items
         {
             return livro.Codigo;
         }
+        
 
     }
 }

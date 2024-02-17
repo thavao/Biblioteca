@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Biblioteca.Models.Items
@@ -35,6 +36,15 @@ namespace Biblioteca.Models.Items
                 Console.WriteLine("Este livro ainda não foi emprestado...");
             }
 
+        }
+        public bool GetDisponivel()
+        {
+            return Disponivel;
+        }
+        public void ItemAddEmprestimo(Emprestimo emprestimo)
+        {
+            Disponivel = false;
+            Emprestimos.Add(emprestimo);
         }
     }
 }

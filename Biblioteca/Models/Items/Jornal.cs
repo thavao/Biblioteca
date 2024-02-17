@@ -27,11 +27,7 @@ namespace Biblioteca.Models.Items
         public string Local { get; private set; }
         public DateTime DataPublicacao { get; private set; }
         
-        public void JornalAddEmprestimo(Emprestimo emprestimo)
-        {
-            Emprestimos.Add(emprestimo);
-        }
-        public void GetJornais(Dictionary<string, Jornal> jornais)
+        public static void GetJornais(Dictionary<string, Jornal> jornais)
         {
             foreach (var jornal in jornais)
             {
@@ -42,6 +38,7 @@ namespace Biblioteca.Models.Items
                 Console.WriteLine($"Editora: {jornal.Value.Editora}");
                 Console.WriteLine($"Número da Edição: {jornal.Value.NumeroEdicao}");
                 Console.WriteLine($"Local: {jornal.Value.Local}");
+                Console.WriteLine($"Situação: {(jornal.Value.Disponivel ? "disponível" : "indisponível")}");
                 Console.WriteLine($"Data de Aquisição: {jornal.Value.DataAquisicao}");
                 Console.WriteLine("------------------------------------------------------------------------------------------------");
             }

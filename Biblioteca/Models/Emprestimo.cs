@@ -9,6 +9,7 @@ namespace Biblioteca.Models
 {
     internal class Emprestimo
     {
+        public Emprestimo() { }
         public Emprestimo(Usuario prestamista, Livro livroEmprestado)
         {
 
@@ -67,9 +68,11 @@ namespace Biblioteca.Models
                 DataDevolucao = dataDevolucao;
                 Devolvido = false;
 
+                
                 Console.WriteLine("O empréstimo foi concluído...");
                 Console.WriteLine("Pressione ENTER para continuar");
                 Console.ReadLine();
+                
             }
             else
             {

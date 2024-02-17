@@ -25,22 +25,22 @@ namespace Biblioteca.Models
 
         public void UsuarioAddEmprestimo(Emprestimo emprestimo)
         {
-            this.Emprestimos.Add(emprestimo);
+            Emprestimos.Add(emprestimo);
         }
-        public void GetUsuarios(Dictionary<string, Usuario> usuarios, Bibliotecario bibliotecario)
+        public static void GetUsuarios(Dictionary<string, Usuario> usuarios, Bibliotecario bibliotecario)
         {
             if (bibliotecario.Autenticar() == true)
             {
-
+                foreach (var usuario in usuarios)
+                {
+                    Console.WriteLine("-------------------------------------------------");
+                    Console.WriteLine($"CPF: {usuario.Key}");
+                    Console.WriteLine($"Nome: {usuario.Value.Nome}");
+                    Console.WriteLine($"CPF Formatado: {usuario.Value.CPF}");
+                    Console.WriteLine("-------------------------------------------------");
+                }
             }
-            foreach (var usuario in usuarios)
-            {
-                Console.WriteLine("-------------------------------------------------");
-                Console.WriteLine($"CPF: {usuario.Key}");
-                Console.WriteLine($"Nome: {usuario.Value.Nome}");
-                Console.WriteLine($"CPF Formatado: {usuario.Value.CPF}");
-                Console.WriteLine("-------------------------------------------------");
-            }
+            
         }
         public void GetEmprestimos()
         {
@@ -62,10 +62,10 @@ namespace Biblioteca.Models
             int i = 0;
             foreach (var usuario in usuarios)
             {
-                if (Emprestimos != null)
+                if (usuario.Value.Emprestimos.Count != 0)
                 {
                     i = 0;
-                    foreach (var item in Emprestimos)
+                    foreach (var item in usuario.Value.Emprestimos)
                     {
                         item.GetEmprestimo(i);
                         i++;

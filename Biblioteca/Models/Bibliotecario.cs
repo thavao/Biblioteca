@@ -39,30 +39,48 @@ namespace Biblioteca.Models
         }
         public void FazerEmprestimo(Usuario usuario, Livro livroEmprestado)
         {
-
-            if (Autenticar())
+            if (livroEmprestado.GetDisponivel())
             {
-                Emprestimo emprestimo = new Emprestimo(usuario, livroEmprestado);
-                usuario.UsuarioAddEmprestimo(emprestimo);
-                livroEmprestado.LivroAddEmprestimo(emprestimo);
+                if (Autenticar())
+                {
+                    Emprestimo emprestimo = new Emprestimo(usuario, livroEmprestado);
+                    if(emprestimo.Prestamista != null) { 
+                    usuario.UsuarioAddEmprestimo(emprestimo);
+                    livroEmprestado.ItemAddEmprestimo(emprestimo);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Falha na Autenticação");
+                }
             }
             else
             {
-                Console.WriteLine("Falha na Autenticação");
+                Console.WriteLine("Livro indisponível...");
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
             }
         }
-        public void FazerEmprestimo(Usuario usuario, Jornal JornalEmprestado)
+        public void FazerEmprestimo(Usuario usuario, Jornal jornalEmprestado)
         {
-
-            if (Autenticar())
+            if (jornalEmprestado.GetDisponivel())
             {
-                Emprestimo emprestimo = new Emprestimo(usuario, JornalEmprestado);
-                usuario.UsuarioAddEmprestimo(emprestimo);
-                JornalEmprestado.JornalAddEmprestimo(emprestimo);
+                if (Autenticar())
+                {
+                    Emprestimo emprestimo = new Emprestimo(usuario, jornalEmprestado);
+                    usuario.UsuarioAddEmprestimo(emprestimo);
+                    jornalEmprestado.ItemAddEmprestimo(emprestimo);
+                }
+                else
+                {
+                    Console.WriteLine("Falha na Autenticação");
+                }
             }
             else
             {
-                Console.WriteLine("Falha na Autenticação");
+                Console.WriteLine("Jornal indisponível...");
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
             }
         }
     }
