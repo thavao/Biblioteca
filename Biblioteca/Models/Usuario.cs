@@ -1,11 +1,10 @@
 ﻿using Biblioteca.Interfaces;
 using Biblioteca.Models.Items;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
@@ -20,7 +19,7 @@ namespace Biblioteca.Models
             Emprestimos = new List<Emprestimo>();
         }
         public string Nome { get; private set; }
-        private string CPF { get; set; }
+        private string CPF { get;  set; }
         public List<Emprestimo> Emprestimos { get; private set; } = new List<Emprestimo>();
 
 
@@ -36,9 +35,8 @@ namespace Biblioteca.Models
                 foreach (var usuario in usuarios)
                 {
                     Console.WriteLine("-------------------------------------------------");
-                    Console.WriteLine($"CPF: {usuario.Key}");
                     Console.WriteLine($"Nome: {usuario.Value.Nome}");
-                    Console.WriteLine($"CPF Formatado: {usuario.Value.CPF}");
+                    Console.WriteLine($"CPF: {usuario.Value.CPF}");
                     Console.WriteLine("-------------------------------------------------");
                 }
             }
@@ -89,8 +87,7 @@ namespace Biblioteca.Models
         {
             string caminho = "Arquivos\\Usuario.json";
 
-            var options = new JsonSerializerOptions { WriteIndented = true, };
-            string jsonString = JsonSerializer.Serialize(usuario, options);
+            string jsonString = JsonConvert.SerializeObject(usuario, Formatting.Indented);
 
             File.WriteAllText(caminho, jsonString);
 
@@ -98,12 +95,12 @@ namespace Biblioteca.Models
 
         public static Dictionary<string, Usuario> Deserialize()
         {
+
             Dictionary<string, Usuario> usuarios = new Dictionary<string, Usuario>();
             string caminho = "Arquivos\\Usuario.json";
-
             string jsonString = File.ReadAllText(caminho);
 
-            return usuarios = JsonSerializer.Deserialize<Dictionary<string, Usuario>>(jsonString);
+            return usuarios = JsonConvert.DeserializeObject<Dictionary<string, Usuario>>(jsonString);
         }
 
     }

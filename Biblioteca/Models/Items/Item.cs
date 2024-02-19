@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -57,8 +57,7 @@ namespace Biblioteca.Models.Items
         {
           
             string caminho = "Arquivos\\Livro.json";
-            var options = new JsonSerializerOptions { WriteIndented = true,  };
-            string jsonString = JsonSerializer.Serialize(livros, options);
+            string jsonString = JsonConvert.SerializeObject(livros, Formatting.Indented);
             File.WriteAllText(caminho, jsonString);
         }
         public static Dictionary<string, Livro> DeserializeItemLivro()
@@ -68,15 +67,14 @@ namespace Biblioteca.Models.Items
             
             string jsonString = File.ReadAllText(caminho);
 
-            return livros = JsonSerializer.Deserialize<Dictionary<string, Livro>>(jsonString);
+            return livros = JsonConvert.DeserializeObject<Dictionary<string, Livro>>(jsonString);
         }
 
         public static void SerializeItem(Dictionary<string, Jornal> jornais)
         {
 
             string caminho = "Arquivos\\Jornal.json";
-            var options = new JsonSerializerOptions { WriteIndented = true, };
-            string jsonString = JsonSerializer.Serialize(jornais, options);
+            string jsonString = JsonConvert.SerializeObject(jornais, Formatting.Indented);
             File.WriteAllText(caminho, jsonString);
         }
         public static Dictionary<string, Jornal> DeserializeItemJornal()
@@ -86,7 +84,7 @@ namespace Biblioteca.Models.Items
 
             string jsonString = File.ReadAllText(caminho);
 
-            return jornais = JsonSerializer.Deserialize<Dictionary<string, Jornal>>(jsonString);
+            return jornais = JsonConvert.DeserializeObject<Dictionary<string, Jornal>>(jsonString);
         }
 
     }

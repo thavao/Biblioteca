@@ -5,9 +5,9 @@ using System.Threading.Channels;
 
 Bibliotecario bibliotecario = new Bibliotecario(login: "123", senha: "123");
 
-Dictionary<string, Livro> livros = Livro.DeserializeItemLivro();
+Dictionary<string, Livro> livros = Item.DeserializeItemLivro();
 
-Dictionary<string, Jornal> jornais = Jornal.DeserializeItemJornal();
+Dictionary<string, Jornal> jornais = Item.DeserializeItemJornal();
 
 Dictionary<string, Usuario> usuarios = Usuario.Deserialize();
 
