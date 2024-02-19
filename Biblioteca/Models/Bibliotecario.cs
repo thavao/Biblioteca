@@ -44,9 +44,10 @@ namespace Biblioteca.Models
                 if (Autenticar())
                 {
                     Emprestimo emprestimo = new Emprestimo(usuario, livroEmprestado);
-                    if(emprestimo.Prestamista != null) { 
-                    usuario.UsuarioAddEmprestimo(emprestimo);
-                    livroEmprestado.ItemAddEmprestimo(emprestimo);
+                    if (emprestimo != null)
+                    {
+                        usuario.UsuarioAddEmprestimo(emprestimo);
+                        livroEmprestado.ItemAddEmprestimo(emprestimo);
                     }
                 }
                 else
@@ -68,8 +69,11 @@ namespace Biblioteca.Models
                 if (Autenticar())
                 {
                     Emprestimo emprestimo = new Emprestimo(usuario, jornalEmprestado);
-                    usuario.UsuarioAddEmprestimo(emprestimo);
-                    jornalEmprestado.ItemAddEmprestimo(emprestimo);
+                    if (emprestimo != null)
+                    {
+                        usuario.UsuarioAddEmprestimo(emprestimo);
+                        jornalEmprestado.ItemAddEmprestimo(emprestimo);
+                    }
                 }
                 else
                 {

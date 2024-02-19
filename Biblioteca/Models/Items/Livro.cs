@@ -8,10 +8,6 @@ namespace Biblioteca.Models.Items
 {
     internal class Livro : Item
     {
-        public Livro()
-        {
-
-        }
         public Livro(string titulo, string autor, string genero, string codigo, DateTime dataAquisicao) : base(codigo, dataAquisicao)
         {
             Titulo = titulo;

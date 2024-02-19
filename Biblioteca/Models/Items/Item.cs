@@ -1,30 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Biblioteca.Models.Items
 {
-    internal class Item
+    abstract class Item
     {
-        protected string Codigo { get; set; }
-        protected DateTime DataAquisicao { get; set; }
-        protected bool Disponivel { get; set; } = true;
-        protected List<Emprestimo> Emprestimos { get; set; }
-
-        public Item() { }
         public Item(string codigo, DateTime dataAquisicao)
         {
             Codigo = codigo;
             DataAquisicao = dataAquisicao;
             Emprestimos = new List<Emprestimo>();
         }
-        public string GetCodigo()
+        public string Codigo { get; protected set; }
+        public DateTime DataAquisicao { get; protected set; }
+        public bool Disponivel { get;protected set; } =  true;
+        public  List<Emprestimo> Emprestimos { get; protected set; }
+
+        public void setDisponivel()
         {
-            return Codigo;
+            Disponivel = true;
         }
+        public void setIndisponivel()
+        {
+            Disponivel = false;
+        }
+
         public void GetEmprestimosItem()
         {
             if (Emprestimos.Count > 0) { 
@@ -39,12 +45,49 @@ namespace Biblioteca.Models.Items
         }
         public bool GetDisponivel()
         {
-            return Disponivel;
+            return Disponivel; 
         }
         public void ItemAddEmprestimo(Emprestimo emprestimo)
         {
             Disponivel = false;
             Emprestimos.Add(emprestimo);
         }
+
+        public static void SerializeItem(Dictionary<string, Livro> livros)
+        {
+          
+            string caminho = "Arquivos\\Livro.json";
+            var options = new JsonSerializerOptions { WriteIndented = true,  };
+            string jsonString = JsonSerializer.Serialize(livros, options);
+            File.WriteAllText(caminho, jsonString);
+        }
+        public static Dictionary<string, Livro> DeserializeItemLivro()
+        {
+            Dictionary<string, Livro> livros = new Dictionary<string, Livro>();
+            string caminho = "Arquivos\\Livro.json";
+            
+            string jsonString = File.ReadAllText(caminho);
+
+            return livros = JsonSerializer.Deserialize<Dictionary<string, Livro>>(jsonString);
+        }
+
+        public static void SerializeItem(Dictionary<string, Jornal> jornais)
+        {
+
+            string caminho = "Arquivos\\Jornal.json";
+            var options = new JsonSerializerOptions { WriteIndented = true, };
+            string jsonString = JsonSerializer.Serialize(jornais, options);
+            File.WriteAllText(caminho, jsonString);
+        }
+        public static Dictionary<string, Jornal> DeserializeItemJornal()
+        {
+            Dictionary<string, Jornal> jornais = new Dictionary<string, Jornal>();
+            string caminho = "Arquivos\\Jornal.json";
+
+            string jsonString = File.ReadAllText(caminho);
+
+            return jornais = JsonSerializer.Deserialize<Dictionary<string, Jornal>>(jsonString);
+        }
+
     }
 }

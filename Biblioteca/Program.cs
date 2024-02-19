@@ -1,58 +1,20 @@
 ﻿using Biblioteca.Models;
 using Biblioteca.Models.Items;
 using System.Collections.Generic;
+using System.Threading.Channels;
 
 Bibliotecario bibliotecario = new Bibliotecario(login: "123", senha: "123");
-Emprestimo emprestimo = new Emprestimo();
-    
-#region populando livros
-Dictionary<string, Livro> livros = new Dictionary<string, Livro>();
 
-// Adicionando os livros ao dicionário
-livros.Add("001L", new Livro("Dom Casmurro", "Machado de Assis", "Romance", "001", new DateTime(1889, 1, 1)));
-livros.Add("002L", new Livro("A Arte da Guerra", "Sun Tzu", "Filosofia/Militar", "002", new DateTime(500, 1, 1)));
-livros.Add("003L", new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Fantasia", "003", new DateTime(1954, 7, 29)));
-livros.Add("004L", new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", "Fábula", "004", new DateTime(1943, 4, 6)));
-livros.Add("005L", new Livro("1984", "George Orwell", "Ficção Científica", "005", new DateTime(1949, 6, 8)));
-livros.Add("006L", new Livro("Orgulho e Preconceito", "Jane Austen", "Romance", "006", new DateTime(1813, 1, 28)));
-livros.Add("007L", new Livro("Crime e Castigo", "Fiódor Dostoiévski", "Romance", "007", new DateTime(1866, 1, 1)));
-livros.Add("008L", new Livro("A Revolução dos Bichos", "George Orwell", "Alegoria", "008", new DateTime(1945, 8, 17)));
-livros.Add("009L", new Livro("O Diário de Anne Frank", "Anne Frank", "Biografia/Diário", "009", new DateTime(1947, 6, 25)));
-livros.Add("010L", new Livro("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Fantasia", "010", new DateTime(1997, 6, 26)));
-#endregion
+Dictionary<string, Livro> livros = Livro.DeserializeItemLivro();
 
-#region populando jornais
-Dictionary<string, Jornal> jornais = new Dictionary<string, Jornal>();
+Dictionary<string, Jornal> jornais = Jornal.DeserializeItemJornal();
 
-// Adicionando os jornais ao dicionário
-jornais.Add("001J", new Jornal("The New York Times", new DateTime(2024, 2, 16), "NYT Company", "Edição 1", "Nova York", "001", new DateTime(2024, 2, 16)));
-jornais.Add("002J", new Jornal("The Guardian", new DateTime(2024, 2, 16), "Guardian News & Media", "Edição 1", "Londres", "002", new DateTime(2024, 2, 16)));
-jornais.Add("003J", new Jornal("Le Monde", new DateTime(2024, 2, 16), "Groupe Le Monde", "Edição 1", "Paris", "003", new DateTime(2024, 2, 16)));
-jornais.Add("004J", new Jornal("Der Spiegel", new DateTime(2024, 2, 16), "Spiegel-Verlag", "Edição 1", "Hamburgo", "004", new DateTime(2024, 2, 16)));
-jornais.Add("005J", new Jornal("El País", new DateTime(2024, 2, 16), "Promotora de Informaciones S.A.", "Edición 1", "Madri", "005", new DateTime(2024, 2, 16)));
-jornais.Add("006J", new Jornal("Corriere della Sera", new DateTime(2024, 2, 16), "RCS MediaGroup", "Edizione 1", "Milão", "006", new DateTime(2024, 2, 16)));
-jornais.Add("007J", new Jornal("Asahi Shimbun", new DateTime(2024, 2, 16), "The Asahi Shimbun Company", "第1版", "Tóquio", "007", new DateTime(2024, 2, 16)));
-jornais.Add("008J", new Jornal("China Daily", new DateTime(2024, 2, 16), "China Daily Group", "第一版", "Pequim", "008", new DateTime(2024, 2, 16)));
-jornais.Add("009J", new Jornal("The Times of India", new DateTime(2024, 2, 16), "The Times Group", "Edition 1", "Mumbai", "009", new DateTime(2024, 2, 16)));
-jornais.Add("010J", new Jornal("Folha de S.Paulo", new DateTime(2024, 2, 16), "Grupo Folha", "Edição 1", "São Paulo", "010", new DateTime(2024, 2, 16)));
-#endregion
+Dictionary<string, Usuario> usuarios = Usuario.Deserialize();
 
-#region Populando usuarios
-Dictionary<string, Usuario> usuarios = new Dictionary<string, Usuario>();
 
-// Adicionando os usuários ao dicionário
-usuarios.Add("12345678901", new Usuario("João da Silva", "123.456.789-01"));
-usuarios.Add("23456789012", new Usuario("Maria Oliveira", "234.567.890-12"));
-usuarios.Add("34567890123", new Usuario("José Santos", "345.678.901-23"));
-usuarios.Add("45678901234", new Usuario("Ana Pereira", "456.789.012-34"));
-usuarios.Add("56789012345", new Usuario("Pedro Souza", "567.890.123-45"));
-usuarios.Add("67890123456", new Usuario("Carla Costa", "678.901.234-56"));
-usuarios.Add("78901234567", new Usuario("Marcos Lima", "789.012.345-67"));
-usuarios.Add("89012345678", new Usuario("Aline Martins", "890.123.456-78"));
-usuarios.Add("90123456789", new Usuario("Lucas Ferreira", "901.234.567-89"));
-usuarios.Add("01234567890", new Usuario("Fernanda Rodrigues", "012.345.678-90"));
 
-#endregion
+
+
 
 
 
@@ -60,11 +22,11 @@ int menu()
 {
     Console.Clear();
     Console.WriteLine("---- Bem Vindo ao programa Biblioteca ----");
-    Console.WriteLine("Digite um dos valores e escolha sua ação");
+    Console.WriteLine("Escolha uma opção:");
     Console.WriteLine("[1] - Listar livros \n[2] - Listar Jornais \n[3] - Listar Usuários");
-    Console.WriteLine("[4] - Fazer empréstimo de Livro \n[5] - Fazer empréstimo de Jornal\n[6] - Devolver empréstimo");
-    Console.WriteLine("[7] - Listar todos empréstimos\n[8] - Listar empréstimos de um usuário\n[9] - Listar empréstimos de um item");
-    Console.WriteLine("[0] - Sair");
+    Console.WriteLine("[4] - Fazer empréstimo de Livro\n[5] - Devolver empréstimo\n[6] - Listar todos empréstimos");
+    Console.WriteLine("[7] - Listar empréstimos de um usuário\n[8] - Listar empréstimos de um item\n[0] - Sair");
+    Console.WriteLine("------------------------------------------");
     return int.Parse(Console.ReadLine());
 }
 bool continua = true;
@@ -92,6 +54,7 @@ while (continua == true)
             break;
 
         case 3://Listar Usuários
+
             Usuario.GetUsuarios(usuarios, bibliotecario);
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
@@ -102,72 +65,72 @@ while (continua == true)
             string cpf = Console.ReadLine();
             Console.WriteLine("Digite o código do Livro a ser emprestado:");
             string codigo = Console.ReadLine();
-            try
+
+            if (usuarios.ContainsKey(codigo))
             {
-                bibliotecario.FazerEmprestimo(usuarios[cpf], livros[codigo]);
-            }
-            catch (KeyNotFoundException ex)
+                if (livros.ContainsKey(codigo))
+                {
+                    bibliotecario.FazerEmprestimo(usuarios[cpf], livros[codigo]);
+                }
+                if (jornais.ContainsKey(codigo))
+                {
+                    bibliotecario.FazerEmprestimo(usuarios[cpf], jornais[codigo]);
+                }
+                else
+                {
+                    Console.WriteLine("Item não encontrado... Por favor, confira o código e tente novamente");
+                    Console.WriteLine("Pressione ENTER para continuar...");
+                    Console.ReadLine();
+                }
+            }else
             {
-                Console.WriteLine("Livro ou usuário não encontrados... Por favor, confira as informações e tente novamente");
-                Console.WriteLine("Pressione ENTER para continuar...");
-                Console.ReadLine();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocorreu um exceção não esperada...");
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Usuário não encontrado... Por favor, confira o código e tente novamente");
                 Console.WriteLine("Pressione ENTER para continuar...");
                 Console.ReadLine();
             }
             break;
 
-        case 5://Fazer empréstimo de Jornal
-            Console.WriteLine("Digite o CPF do Usuário sem pontos:");
-            cpf = Console.ReadLine();
-            Console.WriteLine("Digite o código do Jornal a ser emprestado:");
-            codigo = Console.ReadLine();
-            try
-            {
-                bibliotecario.FazerEmprestimo(usuarios[cpf], jornais[codigo]);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                Console.WriteLine("Livro ou usuário não encontrados... Por favor, confira as informações e tente novamente");
-                Console.WriteLine("Pressione ENTER para continuar...");
-                Console.ReadLine();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocorreu um exceção não esperada...");
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Pressione ENTER para continuar...");
-                Console.ReadLine();
-            }
-            break;
-
-        case 6://Devolver empréstimo
+        case 5://Devolver empréstimo
             Console.WriteLine("Digite o CPF usuário sem pontos:");
             cpf = Console.ReadLine();
-            Console.WriteLine("Digite o código do empréstimo do usuário:");
-            int codigoEmprestimo = int.Parse(Console.ReadLine());
 
-            usuarios[cpf].Devolver(codigoEmprestimo);
+            
+
+            if (usuarios.ContainsKey(cpf)) {
+
+                Console.WriteLine("Digite o código do empréstimo do usuário:");
+                int codigoEmprestimo = int.Parse(Console.ReadLine());
+
+                string codigoItemDevolvido = usuarios[cpf].Devolver(codigoEmprestimo);//FIX
+
+                if (livros.ContainsKey(codigoItemDevolvido))
+                    livros[codigoItemDevolvido].setDisponivel();
+
+                if (jornais.ContainsKey(codigoItemDevolvido))
+                    jornais[codigoItemDevolvido].setDisponivel();
+
+                else
+                    Console.WriteLine("Código de empréstimo do usuário não encontrado");
+            }
+            else 
+                Console.WriteLine("CPF não encontrado...");
+            
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
 
-        case 7://Listar todos empréstimos FIX
-            new Usuario().GetAllUsuariosEmprestimos(usuarios);
+        case 6://Listar todos empréstimos
+            Usuario.GetAllUsuariosEmprestimos(usuarios);
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
 
-        case 8://Listar empréstimos de um usuário
+        case 7://Listar empréstimos de um usuário
             Console.WriteLine("Digite o CPF usuário sem pontos:");
             cpf = Console.ReadLine();
             try
             {
-                usuarios[cpf].GetEmprestimos();
+                Emprestimo.GetEmprestimo(usuarios[cpf]);
             }
             catch (Exception ex)
             {
@@ -176,10 +139,23 @@ while (continua == true)
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
-        case 9://Listar empréstimos de um item
+
+        case 8://Listar empréstimos de um item
             Console.WriteLine("Digite o código do item: ");
             codigo = Console.ReadLine();
-            livros[codigo].GetEmprestimosItem();
+            if (livros.ContainsKey(codigo))
+            {
+                livros[codigo].GetEmprestimosItem();
+            }
+            if (jornais.ContainsKey(codigo))
+            {
+                jornais[codigo].GetEmprestimosItem();
+            }
+            else
+            {
+                Console.WriteLine("Código não encontrado");
+            }
+
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
@@ -190,3 +166,7 @@ while (continua == true)
             break;
     }
 }
+
+Livro.SerializeItem(livros);
+Jornal.SerializeItem(jornais);
+Usuario.Serialize(usuarios);

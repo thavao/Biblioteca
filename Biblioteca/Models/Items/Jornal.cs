@@ -8,7 +8,7 @@ namespace Biblioteca.Models.Items
 {
     internal class Jornal : Item
     {
-        public Jornal() { }
+        
 
         public Jornal(string nome, DateTime dataPublicacao, string editora, string numeroEdicao, string local, string codigo, DateTime dataAquisicao) : base(codigo, dataAquisicao)
         {
@@ -43,5 +43,6 @@ namespace Biblioteca.Models.Items
                 Console.WriteLine("------------------------------------------------------------------------------------------------");
             }
         }
+
     }
 }
