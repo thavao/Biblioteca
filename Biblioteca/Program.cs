@@ -167,6 +167,6 @@ while (continua == true)
     }
 }
 
-Livro.SerializeItem(livros);
-Jornal.SerializeItem(jornais);
+Item.SerializeItem(livros);
+Item.SerializeItem(jornais);
 Usuario.Serialize(usuarios);
