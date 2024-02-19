@@ -10,28 +10,11 @@ Dictionary<string, Jornal> jornais = Item.DeserializeItemJornal();
 Dictionary<string, Usuario> usuarios = Usuario.Deserialize();
 
 
-
-
-
-
-
-
-int menu()
-{
-    Console.Clear();
-    Console.WriteLine("---- Bem Vindo ao programa Biblioteca ----");
-    Console.WriteLine("Escolha uma opção:");
-    Console.WriteLine("[1] - Listar livros \n[2] - Listar Jornais \n[3] - Listar Usuários");
-    Console.WriteLine("[4] - Fazer empréstimo de Livro\n[5] - Devolver empréstimo\n[6] - Listar todos empréstimos");
-    Console.WriteLine("[7] - Listar empréstimos de um usuário\n[8] - Listar empréstimos de um item\n[0] - Sair");
-    Console.WriteLine("------------------------------------------");
-    return int.Parse(Console.ReadLine());
-}
 bool continua = true;
 
 while (continua == true)
 {
-    switch (menu())
+    switch (Menu.MenuPrincipal())
     {
         case 0://Sair
             Console.WriteLine("Você finalizou o programa, até a próxima...");
@@ -80,7 +63,8 @@ while (continua == true)
                     Console.WriteLine("Pressione ENTER para continuar...");
                     Console.ReadLine();
                 }
-            }else
+            }
+            else
             {
                 Console.WriteLine("Usuário não encontrado... Por favor, confira o código e tente novamente");
                 Console.WriteLine("Pressione ENTER para continuar...");
@@ -92,9 +76,10 @@ while (continua == true)
             Console.WriteLine("Digite o CPF usuário sem pontos:");
             cpf = Console.ReadLine();
 
-            
 
-            if (usuarios.ContainsKey(cpf)) {
+
+            if (usuarios.ContainsKey(cpf))
+            {
 
                 Console.WriteLine("Digite o código do empréstimo do usuário:");
                 int codigoEmprestimo = int.Parse(Console.ReadLine());
@@ -110,9 +95,9 @@ while (continua == true)
                 else
                     Console.WriteLine("Código de empréstimo do usuário não encontrado");
             }
-            else 
+            else
                 Console.WriteLine("CPF não encontrado...");
-            
+
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
@@ -157,6 +142,13 @@ while (continua == true)
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
             break;
+        case 9:
+
+            Cadastro();
+
+            Console.WriteLine("Pressione ENTER para continuar...");
+            Console.ReadLine();
+            break;
         default:
             Console.WriteLine("Valor inválido... tente novamente");
             Console.WriteLine("Pressione ENTER para continuar...");
@@ -165,6 +157,30 @@ while (continua == true)
     }
 }
 
+void Cadastro()
+{
+    switch (Menu.MenuCadastro())
+    {
+        case 0://Voltar
+            Console.WriteLine("Voltando para o menu principal...");
+            break;
+
+        case 1://Inserir livro
+
+            break;
+
+        case 2://Inserir jornal
+
+            break;
+
+        case 3://Inserir Usuário
+
+            break;
+
+
+
+    }
+}
 Item.SerializeItem(livros);
 Item.SerializeItem(jornais);
 Usuario.Serialize(usuarios);
