@@ -4,7 +4,7 @@
     {
         
 
-        public Jornal(string nome, DateTime dataPublicacao, string editora, string numeroEdicao, string local, string codigo, DateTime dataAquisicao) : base(codigo, dataAquisicao)
+        public Jornal(string nome, DateTime dataPublicacao, string editora, string numeroEdicao, string local, string codigo, DateTime dataAquisicao, bool disponivel) : base(codigo, dataAquisicao, disponivel)
         {
             Nome = nome;
             Editora = editora;

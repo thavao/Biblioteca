@@ -4,16 +4,18 @@ namespace Biblioteca.Models.Items
 {
     abstract class Item
     {
-        public Item(string codigo, DateTime dataAquisicao)
+        public Item(string codigo, DateTime dataAquisicao, bool disponivel)
         {
             Codigo = codigo;
             DataAquisicao = dataAquisicao;
             Emprestimos = new List<Emprestimo>();
+            Disponivel = disponivel;
         }
         public string Codigo { get; protected set; }
         public DateTime DataAquisicao { get; protected set; }
-        public bool Disponivel { get;protected set; } =  true;
+        public bool Disponivel { get;protected set; }
         public  List<Emprestimo> Emprestimos { get; protected set; }
+
 
         public void setDisponivel()
         {
@@ -79,6 +81,6 @@ namespace Biblioteca.Models.Items
 
             return jornais = JsonConvert.DeserializeObject<Dictionary<string, Jornal>>(jsonString);
         }
-
+        
     }
 }

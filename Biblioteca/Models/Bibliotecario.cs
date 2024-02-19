@@ -43,6 +43,7 @@ namespace Biblioteca.Models
                     {
                         usuario.UsuarioAddEmprestimo(emprestimo);
                         livroEmprestado.ItemAddEmprestimo(emprestimo);
+                        livroEmprestado.setIndisponivel();
                     }
                 }
                 else
@@ -68,6 +69,7 @@ namespace Biblioteca.Models
                     {
                         usuario.UsuarioAddEmprestimo(emprestimo);
                         jornalEmprestado.ItemAddEmprestimo(emprestimo);
+                        //jornalEmprestado.setIndisponivel();
                     }
                 }
                 else

@@ -8,7 +8,7 @@
             Console.WriteLine("---- Bem Vindo ao programa Biblioteca ----");
             Console.WriteLine("Escolha uma opção:");
             Console.WriteLine("[1] - Listar livros \n[2] - Listar Jornais \n[3] - Listar Usuários");
-            Console.WriteLine("[4] - Fazer empréstimo de Livro\n[5] - Devolver empréstimo\n[6] - Listar todos empréstimos");
+            Console.WriteLine("[4] - Fazer empréstimo\n[5] - Devolver empréstimo\n[6] - Listar todos empréstimos");
             Console.WriteLine("[7] - Listar empréstimos de um usuário\n[8] - Listar empréstimos de um item\n[9] - Menu Cadastro");
             Console.WriteLine("[0] - Sair");
             Console.WriteLine("------------------------------------------");

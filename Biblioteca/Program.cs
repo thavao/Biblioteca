@@ -44,11 +44,13 @@ while (continua == true)
         case 4://Fazer empréstimo de Livro
             Console.WriteLine("Digite o CPF do Usuário sem pontos:");
             string cpf = Console.ReadLine();
-            Console.WriteLine("Digite o código do Livro a ser emprestado:");
-            string codigo = Console.ReadLine();
+            string codigo;
 
-            if (usuarios.ContainsKey(codigo))
+            if (usuarios.ContainsKey(cpf))
             {
+                Console.WriteLine("Digite o código do Item a ser emprestado:");
+                codigo = Console.ReadLine();
+
                 if (livros.ContainsKey(codigo))
                 {
                     bibliotecario.FazerEmprestimo(usuarios[cpf], livros[codigo]);
@@ -166,15 +168,79 @@ void Cadastro()
             break;
 
         case 1://Inserir livro
+            Console.Write("Digite o Titulo: ");
+            string titulo = Console.ReadLine();
 
+            Console.Write("Digite o Autor: ");
+            string autor = Console.ReadLine();
+
+            Console.Write("Digite o Gênero: ");
+            string genero = Console.ReadLine();
+
+            string codigo = (livros.Count()+1).ToString() + "L";
+
+            livros.Add(codigo, new Livro(titulo, autor, genero, codigo, DateTime.Now, true));
+            Console.WriteLine("Livro cadastrado com sucesso...");
+            Console.WriteLine("Pressione ENTER para continuar...");
+            Console.ReadLine();
             break;
 
         case 2://Inserir jornal
+            Console.Write("Digite o Nome: ");
+            string nome = Console.ReadLine();
+
+            Console.Write("Digite a Editora: ");
+            string editora = Console.ReadLine();
+
+            Console.Write("Digite o Numero de edição: ");
+            string numeroEdicao = Console.ReadLine();
+
+            Console.Write("Digite o local: ");
+            string local = Console.ReadLine();
+            Console.Write("Digite a data de publicacao (dia-mes-ano): ");
+            string dataPublicacaoString = Console.ReadLine();
+            try
+            {
+                
+                DateTime dataPublicacao = Convert.ToDateTime(dataPublicacaoString);
+
+                codigo = (jornais.Count()+1).ToString() + "J";
+
+                jornais.Add(codigo, new Jornal(nome, dataPublicacao, editora, numeroEdicao, local, codigo, DateTime.Now, true));
+                Console.WriteLine("Jornal cadastrado com sucesso...");
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu uma exceção... o jornal não foi cadastrado");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
+            }
+
 
             break;
 
         case 3://Inserir Usuário
+            Console.Write("Digite o nome: ");
+            nome = Console.ReadLine();
 
+            Console.Write("Digite o cpf sem pontos: ");
+            string cpf = Console.ReadLine();
+
+            if (usuarios.TryAdd(cpf, new Usuario(nome, cpf)))
+            {
+                Console.WriteLine("Usuário cadastrado com sucesso...");
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Não foi possível cadastrar o usuário...");
+                Console.WriteLine("Pressione ENTER para continuar...");
+                Console.ReadLine();
+            }
             break;
 
 

@@ -2,11 +2,12 @@
 {
     internal class Livro : Item
     {
-        public Livro(string titulo, string autor, string genero, string codigo, DateTime dataAquisicao) : base(codigo, dataAquisicao)
+        public Livro(string titulo, string autor, string genero, string codigo, DateTime dataAquisicao, bool disponivel) : base(codigo, dataAquisicao, disponivel)
         {
             Titulo = titulo;
             Autor = autor;
             Genero = genero;
+            Disponivel = disponivel;
         }
         public string Titulo { get; private set; }
         public string Autor { get; private set; }

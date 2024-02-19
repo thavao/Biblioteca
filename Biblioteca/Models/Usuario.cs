@@ -11,7 +11,7 @@ namespace Biblioteca.Models
             Emprestimos = new List<Emprestimo>();
         }
         public string Nome { get; private set; }
-        private string CPF { get;  set; }
+        public string CPF { get;  private set; }
         public List<Emprestimo> Emprestimos { get; private set; } = new List<Emprestimo>();
 
 
@@ -28,7 +28,7 @@ namespace Biblioteca.Models
                 {
                     Console.WriteLine("-------------------------------------------------");
                     Console.WriteLine($"Nome: {usuario.Value.Nome}");
-                    Console.WriteLine($"CPF: {usuario.Value.CPF}");
+                    Console.WriteLine($"CPF: {usuario.Value.CPF: 000.000.000-00}");
                     Console.WriteLine("-------------------------------------------------");
                 }
             }
@@ -46,7 +46,7 @@ namespace Biblioteca.Models
                 }
                 else
                 {
-                    Console.WriteLine($"{usuario.Value.Nome}, {usuario.Value.CPF} ainda não possui empréstimos na biblioteca");
+                    Console.WriteLine($"{usuario.Value.Nome}, {usuario.Value.CPF: 000.000.000-00} ainda não possui empréstimos na biblioteca");
                 }
             }
 

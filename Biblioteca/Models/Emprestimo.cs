@@ -12,7 +12,8 @@ namespace Biblioteca.Models
         public Emprestimo() { }
         public Emprestimo(Usuario usuario, Livro livroEmprestado)
         {
-
+            Console.WriteLine();
+            Console.WriteLine("--------------");
             Console.WriteLine("Digite a quantidade de dias que o livro ficará emprestado: ");
             DateTime dataDevolucao = DateTime.Now.AddDays(int.Parse(Console.ReadLine()));
 
@@ -46,7 +47,8 @@ namespace Biblioteca.Models
         }
         public Emprestimo(Usuario usuario, Jornal jornalEmprestado)
         {
-
+            Console.WriteLine();
+            Console.WriteLine("--------------");
             Console.WriteLine("Digite a quantidade de dias que o jornal ficará emprestado: ");
             DateTime dataDevolucao = DateTime.Now.AddDays(int.Parse(Console.ReadLine()));
 
@@ -104,10 +106,10 @@ namespace Biblioteca.Models
                 {
                     Console.WriteLine("--------------------------------------------");
                     Console.WriteLine("--Informações do usuário--");
-                    Console.WriteLine($"CPF do usuário: {usuario.GetCPF()}");
+                    Console.WriteLine($"CPF do usuário: {usuario.GetCPF(): 000.000.000-00}");
                     Console.WriteLine($"Nome: {usuario.Nome}");
                     Console.WriteLine("--Informações do item--");
-                    Console.WriteLine($"{emprestimo.CodigoItem}");
+                    Console.WriteLine($"Código do Item: {emprestimo.CodigoItem}");
                     Console.WriteLine($"Data de emprestimo: {emprestimo.DataEmprestimo.ToString("dd/MM/yyyy")}");
                     Console.WriteLine($"Data de devolução: {emprestimo.DataDevolucao.ToString("dd/MM/yyyy")}");
                     Console.WriteLine($"Situação: {(emprestimo.Devolvido ? "devolvido" : "não devolvido")}");
@@ -118,7 +120,7 @@ namespace Biblioteca.Models
             }
             else
             {
-                Console.WriteLine($"{usuario.Nome}, {usuario.GetCPF()} ainda não possui empréstimos na biblioteca");
+                Console.WriteLine($"{usuario.Nome}, {usuario.GetCPF(): 000.000.000-00} ainda não possui empréstimos na biblioteca");
             }
         }
        public void GetEmprestimo()
@@ -128,7 +130,7 @@ namespace Biblioteca.Models
             Console.WriteLine($"CPF do usuário: {CPFUsuario:000.000.000-00}");
             
             Console.WriteLine("--Informações do item--");
-            Console.WriteLine($"{CodigoItem}");
+            Console.WriteLine($"Código do Item: {CodigoItem}");
             Console.WriteLine($"Data de empréstimo: {DataEmprestimo.ToString("dd/MM/yyyy")}");
             Console.WriteLine($"Data de devolução: {DataDevolucao.ToString("dd/MM/yyyy")}");
             Console.WriteLine($"Situação: {(Devolvido ? "devolvido" : "não devolvido")}");
