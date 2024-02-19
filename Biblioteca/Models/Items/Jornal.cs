@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Biblioteca.Models.Items
+﻿namespace Biblioteca.Models.Items
 {
     internal class Jornal : Item
     {

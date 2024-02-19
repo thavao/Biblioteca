@@ -1,7 +1,5 @@
 ﻿using Biblioteca.Models;
 using Biblioteca.Models.Items;
-using System.Collections.Generic;
-using System.Threading.Channels;
 
 Bibliotecario bibliotecario = new Bibliotecario(login: "123", senha: "123");
 
