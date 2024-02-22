@@ -20,7 +20,7 @@ Salvar e sair;
 Este é um projeto que fiz única e exclusivamente para por em prática conteúdos que vi nas aulas do curso "Programação Orientada a Objetos com C#" da [DIO](https://web.dio.me/home)
 
 ## Como utilizar ?
-Certifique de ter instalado em sua maquina a versão 7 ou superior do .Net Consulte a [documentação](https://learn.microsoft.com/pt-br/dotnet/core/install/)
+Certifique de ter instalado em sua maquina a versão 7 do .Net | Consulte a [documentação](https://learn.microsoft.com/pt-br/dotnet/core/install/)
 
  1. Baixe os arquivos do projeto
  2. Acesse a pasta "Executavel"
