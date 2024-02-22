@@ -1,0 +1,131 @@
+{
+  "01J": {
+    "Nome": "Folha de São Paulo",
+    "Editora": "Grupo Folha",
+    "NumeroEdicao": "Edição 12345",
+    "Local": "São Paulo",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "01J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "02J": {
+    "Nome": "O Globo",
+    "Editora": "Grupo Globo",
+    "NumeroEdicao": "Edição 54321",
+    "Local": "Rio de Janeiro",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "02J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "003": {
+    "Nome": "Estado de Minas",
+    "Editora": "Diários Associados",
+    "NumeroEdicao": "Edição 98765",
+    "Local": "Belo Horizonte",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "03J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "04J": {
+    "Nome": "Correio Braziliense",
+    "Editora": "Grupo Correio",
+    "NumeroEdicao": "Edição 13579",
+    "Local": "Brasília",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "04J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "05J": {
+    "Nome": "O Estado de S.Paulo",
+    "Editora": "Grupo Estado",
+    "NumeroEdicao": "Edição 24680",
+    "Local": "São Paulo",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "05J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "06J": {
+    "Nome": "Diário do Nordeste",
+    "Editora": "Grupo de Comunicação O Povo",
+    "NumeroEdicao": "Edição 86420",
+    "Local": "Fortaleza",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "06J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "07J": {
+    "Nome": "Zero Hora",
+    "Editora": "Grupo RBS",
+    "NumeroEdicao": "Edição 77777",
+    "Local": "Porto Alegre",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "07J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "08J": {
+    "Nome": "A Tarde",
+    "Editora": "Grupo A TARDE",
+    "NumeroEdicao": "Edição 12345",
+    "Local": "Salvador",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "08J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "09J": {
+    "Nome": "Gazeta do Povo",
+    "Editora": "Grupo Paranaense de Comunicação",
+    "NumeroEdicao": "Edição 98765",
+    "Local": "Curitiba",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "09J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": [
+      {
+        "DataEmprestimo": "0001-01-01T00:00:00",
+        "CodigoItem": "09J",
+        "CPFUsuario": "567.890.123-45",
+        "DataDevolucao": "0001-01-01T00:00:00",
+        "Devolvido": false
+      }
+    ]
+  },
+  "10J": {
+    "Nome": "O Popular",
+    "Editora": "Grupo Jaime Câmara",
+    "NumeroEdicao": "Edição 13579",
+    "Local": "Goiânia",
+    "DataPublicacao": "2024-02-16T00:00:00",
+    "Codigo": "10J",
+    "DataAquisicao": "2024-02-16T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "11J": {
+    "Nome": "Jornal da Tarde",
+    "Editora": "JDT",
+    "NumeroEdicao": "031",
+    "Local": "Araraquara-SP",
+    "DataPublicacao": "2020-07-27T00:00:00",
+    "Codigo": "11J",
+    "DataAquisicao": "2024-02-19T20:14:40.8996447-03:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  }
+}

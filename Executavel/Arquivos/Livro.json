@@ -1,0 +1,109 @@
+{
+  "01L": {
+    "Titulo": "Dom Casmurro",
+    "Autor": "Machado de Assis",
+    "Genero": "Romance",
+    "Codigo": "01L",
+    "DataAquisicao": "1889-01-01T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "02L": {
+    "Titulo": "A Arte da Guerra",
+    "Autor": "Sun Tzu",
+    "Genero": "Filosofia/Militar",
+    "Codigo": "02L",
+    "DataAquisicao": "0500-01-01T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "03L": {
+    "Titulo": "O Senhor dos Anéis",
+    "Autor": "J.R.R. Tolkien",
+    "Genero": "Fantasia",
+    "Codigo": "03L",
+    "DataAquisicao": "1954-07-29T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "04L": {
+    "Titulo": "O Pequeno Príncipe",
+    "Autor": "Antoine de Saint-Exupéry",
+    "Genero": "Fábula",
+    "Codigo": "04L",
+    "DataAquisicao": "1943-04-06T00:00:00",
+    "Disponivel": false,
+    "Emprestimos": []
+  },
+  "05L": {
+    "Titulo": "1984",
+    "Autor": "George Orwell",
+    "Genero": "Ficção Científica",
+    "Codigo": "05L",
+    "DataAquisicao": "1949-06-08T00:00:00",
+    "Disponivel": false,
+    "Emprestimos": [
+      {
+        "DataEmprestimo": "0001-01-01T00:00:00",
+        "CodigoItem": "05L",
+        "CPFUsuario": "123.456.789-01",
+        "DataDevolucao": "0001-01-01T00:00:00",
+        "Devolvido": false
+      }
+    ]
+  },
+  "06L": {
+    "Titulo": "Orgulho e Preconceito",
+    "Autor": "Jane Austen",
+    "Genero": "Romance",
+    "Codigo": "06L",
+    "DataAquisicao": "1813-01-28T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "07L": {
+    "Titulo": "Crime e Castigo",
+    "Autor": "Fiódor Dostoiévski",
+    "Genero": "Romance",
+    "Codigo": "07L",
+    "DataAquisicao": "1866-01-01T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "08L": {
+    "Titulo": "A Revolução dos Bichos",
+    "Autor": "George Orwell",
+    "Genero": "Alegoria",
+    "Codigo": "08L",
+    "DataAquisicao": "1945-08-17T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "09L": {
+    "Titulo": "O Diário de Anne Frank",
+    "Autor": "Anne Frank",
+    "Genero": "Biografia/Diário",
+    "Codigo": "09L",
+    "DataAquisicao": "1947-06-25T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "10L": {
+    "Titulo": "Harry Potter e a Pedra Filosofal",
+    "Autor": "J.K. Rowling",
+    "Genero": "Fantasia",
+    "Codigo": "010L",
+    "DataAquisicao": "1997-06-26T00:00:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  },
+  "11L": {
+    "Titulo": "O Que Temos Não Tem Nome",
+    "Autor": "Daniela Lira",
+    "Genero": "Romance",
+    "Codigo": "101L",
+    "DataAquisicao": "2024-02-19T19:49:58.429579-03:00",
+    "Disponivel": true,
+    "Emprestimos": []
+  }
+}

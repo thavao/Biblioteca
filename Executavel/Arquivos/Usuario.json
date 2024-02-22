@@ -1,0 +1,68 @@
+{
+  "12345678901": {
+    "Nome": "João da Silva",
+    "CPF": "123.456.789-01",
+    "Emprestimos": [
+      {
+        "DataEmprestimo": "0001-01-01T00:00:00",
+        "CodigoItem": "05L",
+        "CPFUsuario": "123.456.789-01",
+        "DataDevolucao": "0001-01-01T00:00:00",
+        "Devolvido": false
+      }
+    ]
+  },
+  "23456789012": {
+    "Nome": "Maria Oliveira",
+    "CPF": "234.567.890-12",
+    "Emprestimos": []
+  },
+  "34567890123": {
+    "Nome": "José Santos",
+    "CPF": "345.678.901-23",
+    "Emprestimos": []
+  },
+  "45678901234": {
+    "Nome": "Ana Pereira",
+    "CPF": "456.789.012-34",
+    "Emprestimos": []
+  },
+  "56789012345": {
+    "Nome": "Pedro Souza",
+    "CPF": "567.890.123-45",
+    "Emprestimos": [
+      {
+        "DataEmprestimo": "0001-01-01T00:00:00",
+        "CodigoItem": "09J",
+        "CPFUsuario": "567.890.123-45",
+        "DataDevolucao": "0001-01-01T00:00:00",
+        "Devolvido": true
+      }
+    ]
+  },
+  "67890123456": {
+    "Nome": "Carla Costa",
+    "CPF": "678.901.234-56",
+    "Emprestimos": []
+  },
+  "78901234567": {
+    "Nome": "Marcos Lima",
+    "CPF": "789.012.345-67",
+    "Emprestimos": []
+  },
+  "89012345678": {
+    "Nome": "Aline Martins",
+    "CPF": "890.123.456-78",
+    "Emprestimos": []
+  },
+  "90123456789": {
+    "Nome": "Lucas Ferreira",
+    "CPF": "901.234.567-89",
+    "Emprestimos": []
+  },
+  "01234567890": {
+    "Nome": "Fernanda Rodrigues",
+    "CPF": "012.345.678-90",
+    "Emprestimos": []
+  }
+}
