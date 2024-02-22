@@ -145,8 +145,10 @@ while (continua == true)
             Console.ReadLine();
             break;
         case 9:
-
+            if(bibliotecario.Autenticar())
             Cadastro();
+            else
+                Console.WriteLine("Você não tem permissão para acessar esse menu");
 
             Console.WriteLine("Pressione ENTER para continuar...");
             Console.ReadLine();
