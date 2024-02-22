@@ -55,7 +55,7 @@ while (continua == true)
                 {
                     bibliotecario.FazerEmprestimo(usuarios[cpf], livros[codigo]);
                 }
-                if (jornais.ContainsKey(codigo))
+                else if (jornais.ContainsKey(codigo))
                 {
                     bibliotecario.FazerEmprestimo(usuarios[cpf], jornais[codigo]);
                 }
@@ -91,7 +91,7 @@ while (continua == true)
                 if (livros.ContainsKey(codigoItemDevolvido))
                     livros[codigoItemDevolvido].setDisponivel();
 
-                if (jornais.ContainsKey(codigoItemDevolvido))
+                else if (jornais.ContainsKey(codigoItemDevolvido))
                     jornais[codigoItemDevolvido].setDisponivel();
 
                 else
@@ -132,7 +132,7 @@ while (continua == true)
             {
                 livros[codigo].GetEmprestimosItem();
             }
-            if (jornais.ContainsKey(codigo))
+            else if (jornais.ContainsKey(codigo))
             {
                 jornais[codigo].GetEmprestimosItem();
             }

@@ -80,9 +80,15 @@ namespace Biblioteca.Models
             string caminho = "Arquivos\\Usuario.json";
 
             string jsonString = JsonConvert.SerializeObject(usuario, Formatting.Indented);
-
-            File.WriteAllText(caminho, jsonString);
-
+            try
+            {
+                File.WriteAllText(caminho, jsonString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu uma exceção...");
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public static Dictionary<string, Usuario> Deserialize()
@@ -90,9 +96,18 @@ namespace Biblioteca.Models
 
             Dictionary<string, Usuario> usuarios = new Dictionary<string, Usuario>();
             string caminho = "Arquivos\\Usuario.json";
-            string jsonString = File.ReadAllText(caminho);
+            try
+            {
+                string jsonString = File.ReadAllText(caminho);
 
-            return usuarios = JsonConvert.DeserializeObject<Dictionary<string, Usuario>>(jsonString);
+                return usuarios = JsonConvert.DeserializeObject<Dictionary<string, Usuario>>(jsonString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu uma exceção...");
+                Console.WriteLine(ex.Message);
+                return usuarios;
+            }
         }
 
     }

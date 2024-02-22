@@ -13,8 +13,8 @@ namespace Biblioteca.Models.Items
         }
         public string Codigo { get; protected set; }
         public DateTime DataAquisicao { get; protected set; }
-        public bool Disponivel { get;protected set; }
-        public  List<Emprestimo> Emprestimos { get; protected set; }
+        public bool Disponivel { get; protected set; }
+        public List<Emprestimo> Emprestimos { get; protected set; }
 
 
         public void setDisponivel()
@@ -28,19 +28,22 @@ namespace Biblioteca.Models.Items
 
         public void GetEmprestimosItem()
         {
-            if (Emprestimos.Count > 0) { 
-            foreach (var item in Emprestimos)
+            if (Emprestimos.Count > 0)
             {
-                item.GetEmprestimo();
+                foreach (var item in Emprestimos)
+                {
+                    item.GetEmprestimo();
+                }
             }
-            }else {
+            else
+            {
                 Console.WriteLine("Este livro ainda não foi emprestado...");
             }
 
         }
         public bool GetDisponivel()
         {
-            return Disponivel; 
+            return Disponivel;
         }
         public void ItemAddEmprestimo(Emprestimo emprestimo)
         {
@@ -50,19 +53,36 @@ namespace Biblioteca.Models.Items
 
         public static void SerializeItem(Dictionary<string, Livro> livros)
         {
-          
+
             string caminho = "Arquivos\\Livro.json";
             string jsonString = JsonConvert.SerializeObject(livros, Formatting.Indented);
-            File.WriteAllText(caminho, jsonString);
+            try
+            {
+                File.WriteAllText(caminho, jsonString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu uma exceção...");
+                Console.WriteLine(ex.Message);
+            }
         }
         public static Dictionary<string, Livro> DeserializeItemLivro()
         {
             Dictionary<string, Livro> livros = new Dictionary<string, Livro>();
-            string caminho = "Arquivos\\Livro.json";
-            
-            string jsonString = File.ReadAllText(caminho);
 
-            return livros = JsonConvert.DeserializeObject<Dictionary<string, Livro>>(jsonString);
+            string caminho = "Arquivos\\Livro.json";
+            try
+            {
+                string jsonString = File.ReadAllText(caminho);
+
+                return livros = JsonConvert.DeserializeObject<Dictionary<string, Livro>>(jsonString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu uma exceção...");
+                Console.WriteLine(ex.Message);
+                return livros;
+            }
         }
 
         public static void SerializeItem(Dictionary<string, Jornal> jornais)
@@ -70,17 +90,35 @@ namespace Biblioteca.Models.Items
 
             string caminho = "Arquivos\\Jornal.json";
             string jsonString = JsonConvert.SerializeObject(jornais, Formatting.Indented);
-            File.WriteAllText(caminho, jsonString);
+            try
+            {
+                File.WriteAllText(caminho, jsonString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu uma exceção...");
+                Console.WriteLine(ex.Message);
+            }
+
+
         }
         public static Dictionary<string, Jornal> DeserializeItemJornal()
         {
             Dictionary<string, Jornal> jornais = new Dictionary<string, Jornal>();
             string caminho = "Arquivos\\Jornal.json";
+            try
+            {
+                string jsonString = File.ReadAllText(caminho);
+                return jornais = JsonConvert.DeserializeObject<Dictionary<string, Jornal>>(jsonString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu uma exceção...");
+                Console.WriteLine(ex.Message);
+                return jornais;
+            }
 
-            string jsonString = File.ReadAllText(caminho);
-
-            return jornais = JsonConvert.DeserializeObject<Dictionary<string, Jornal>>(jsonString);
         }
-        
+
     }
 }
